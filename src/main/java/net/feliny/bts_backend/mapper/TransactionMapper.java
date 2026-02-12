@@ -2,7 +2,6 @@ package net.feliny.bts_backend.mapper;
 
 import net.feliny.bts_backend.dto.AccountDto;
 import net.feliny.bts_backend.dto.TransactionDto;
-import net.feliny.bts_backend.entity.Account;
 import net.feliny.bts_backend.entity.Transaction;
 
 public class TransactionMapper {
