@@ -21,7 +21,7 @@ public class UserMapper {
                             account.getNumber(),
                             account.getAgency(),
                             account.getBalance(),
-                            account.isActive(),
+                            account.getActive(),
                             account.getUser().getId()
                     ))
                     .toList();

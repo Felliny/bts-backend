@@ -53,4 +53,23 @@ public class AccountServiceImpl implements AccountService {
         return accounts.stream().map(account -> AccountMapper.mapToAccountDto(account))
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public AccountDto updateAccount(Long accountId, AccountDto updatedAccount) {
+        Account account = accountRepository.findById(accountId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("[UPDATE] User not found with id: " + accountId));
+
+        if (updatedAccount.getBalance() != null){
+            account.setBalance(updatedAccount.getBalance());
+        }
+        else {
+            account.setActive(updatedAccount.getActive());
+        }
+
+
+        Account updatedAccountObj = accountRepository.save(account);
+
+        return AccountMapper.mapToAccountDto(updatedAccountObj);
+    }
 }

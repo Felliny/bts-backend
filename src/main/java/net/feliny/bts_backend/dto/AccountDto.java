@@ -16,6 +16,6 @@ public class AccountDto {
     private String number;
     private String agency;
     private BigDecimal balance;
-    private boolean active;
+    private Boolean active;
     private Long userId;
 }

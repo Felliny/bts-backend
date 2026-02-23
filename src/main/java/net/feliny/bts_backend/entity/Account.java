@@ -33,7 +33,7 @@ public class Account {
     private BigDecimal balance = BigDecimal.ZERO;
 
     @Column(name = "active", nullable = false)
-    private boolean active = true;
+    private Boolean active = true;
 
     @JoinColumn(name = "user_id", nullable = false)
     @ManyToOne

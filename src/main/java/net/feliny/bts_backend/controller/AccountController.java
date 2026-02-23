@@ -36,4 +36,12 @@ public class AccountController {
         List<AccountDto> accounts = accountService.getAllAccounts();
         return ResponseEntity.ok(accounts);
     }
+
+    // Update account REST API
+    @PutMapping("{id}")
+    public ResponseEntity<AccountDto> updateAccount(@PathVariable("id") Long accountId,
+                                                    @RequestBody AccountDto updatedAccount){
+        AccountDto accountDto = accountService.updateAccount(accountId, updatedAccount);
+        return ResponseEntity.ok(accountDto);
+    }
 }

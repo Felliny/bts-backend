@@ -11,7 +11,7 @@ public class AccountMapper {
                 account.getNumber(),
                 account.getAgency(),
                 account.getBalance(),
-                account.isActive(),
+                account.getActive(),
                 account.getUser().getId()
         );
     }
@@ -22,7 +22,7 @@ public class AccountMapper {
                 accountDto.getNumber(),
                 accountDto.getAgency(),
                 accountDto.getBalance(),
-                accountDto.isActive(),
+                accountDto.getActive(),
                 null
         );
     }
