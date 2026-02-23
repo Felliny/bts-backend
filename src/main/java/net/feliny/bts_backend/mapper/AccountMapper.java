@@ -11,7 +11,8 @@ public class AccountMapper {
                 account.getNumber(),
                 account.getAgency(),
                 account.getBalance(),
-                account.isActive()
+                account.isActive(),
+                account.getUser().getId()
         );
     }
 
