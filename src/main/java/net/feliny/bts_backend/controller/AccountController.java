@@ -5,10 +5,7 @@ import net.feliny.bts_backend.dto.AccountDto;
 import net.feliny.bts_backend.service.AccountService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @AllArgsConstructor
 @RestController
@@ -17,11 +14,17 @@ public class AccountController {
 
     private AccountService accountService;
 
-
+    // Create account REST API
     @PostMapping
     public ResponseEntity<AccountDto> createAccount(@RequestBody AccountDto accountDto){
         AccountDto savedAccount = accountService.createAccount(accountDto);
         return new ResponseEntity<>(savedAccount, HttpStatus.CREATED);
     }
 
+    // Get account REST API
+    @GetMapping("{id}")
+    public ResponseEntity<AccountDto> getAccountById(@PathVariable("id") Long accountId){
+        AccountDto accountDto = accountService.getAccountById(accountId);
+        return ResponseEntity.ok(accountDto);
+    }
 }
