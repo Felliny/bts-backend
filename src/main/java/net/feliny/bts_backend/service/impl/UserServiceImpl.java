@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import net.feliny.bts_backend.dto.UserDto;
 import net.feliny.bts_backend.entity.User;
 import net.feliny.bts_backend.exception.ResourceAlreadyExistsException;
+import net.feliny.bts_backend.exception.ResourceNotFoundException;
 import net.feliny.bts_backend.mapper.UserMapper;
 import net.feliny.bts_backend.repository.UserRepository;
 import net.feliny.bts_backend.service.UserService;
@@ -43,7 +44,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto getUserById(Long userId) {
-        return null;
+
+        User user = userRepository.findById(userId)
+                .orElseThrow(() ->
+                        new ResourceNotFoundException("User not found"));
+
+
+        return UserMapper.mapToUserDto(user);
     }
 
     @Override
