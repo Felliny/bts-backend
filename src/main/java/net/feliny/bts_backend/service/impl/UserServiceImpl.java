@@ -54,6 +54,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public UserDto loginUser(String email, String password) {
+
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new ResourceNotFoundException("invalid email or password"));
+
+        if (!user.getPassword().equals(password)){
+            throw new ResourceNotFoundException("invalid email or password");
+        }
+
+
+        return UserMapper.mapToUserDto(user);
+    }
+
+    @Override
     public List<UserDto> getAllUsers() {
         return List.of();
     }
