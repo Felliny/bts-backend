@@ -35,7 +35,7 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    //todo remove fetch eager later
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Account> accounts;
 }
