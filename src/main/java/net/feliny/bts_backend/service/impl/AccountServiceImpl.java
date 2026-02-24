@@ -25,7 +25,7 @@ public class AccountServiceImpl implements AccountService {
     public AccountDto createAccount(AccountDto accountDto) {
 
         User user = userRepository.findById(accountDto.getUserId())
-                .orElseThrow(() -> new ResourceNotFoundException("[CREATE] User not found with id: " + accountDto.getUserId()));
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
 
         Account account = AccountMapper.mapToAccount(accountDto);
 
@@ -40,7 +40,7 @@ public class AccountServiceImpl implements AccountService {
     public AccountDto getAccountById(Long accountId) {
         Account account = accountRepository.findById(accountId)
                 .orElseThrow(() ->
-                        new ResourceNotFoundException("[GET] User not found with id: " + accountId));
+                        new ResourceNotFoundException("Account not found"));
 
 
         return AccountMapper.mapToAccountDto(account);
@@ -58,7 +58,7 @@ public class AccountServiceImpl implements AccountService {
     public AccountDto updateAccount(Long accountId, AccountDto updatedAccount) {
         Account account = accountRepository.findById(accountId)
                 .orElseThrow(() ->
-                        new ResourceNotFoundException("[UPDATE] User not found with id: " + accountId));
+                        new ResourceNotFoundException("Account not found"));
 
         if (updatedAccount.getBalance() != null){
             account.setBalance(updatedAccount.getBalance());
