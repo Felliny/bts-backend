@@ -8,7 +8,6 @@ import net.feliny.bts_backend.exception.ResourceNotFoundException;
 import net.feliny.bts_backend.mapper.UserMapper;
 import net.feliny.bts_backend.repository.UserRepository;
 import net.feliny.bts_backend.service.UserService;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
