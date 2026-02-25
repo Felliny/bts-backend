@@ -38,7 +38,7 @@ public class AccountController {
     }
 
     // Update account REST API
-    @PutMapping("{id}")
+    @PatchMapping("{id}")
     public ResponseEntity<AccountDto> updateAccount(@PathVariable("id") Long accountId,
                                                     @RequestBody AccountDto updatedAccount){
         AccountDto accountDto = accountService.updateAccount(accountId, updatedAccount);
