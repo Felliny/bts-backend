@@ -78,6 +78,27 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto updateUser(Long userId, UserDto updatedUser) {
-        return null;
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
+
+        if (updatedUser.getName() != null){
+            user.setName(updatedUser.getName());
+        }
+        if (updatedUser.getEmail() != null){
+
+            Optional<User> existingEmail = userRepository.findByEmail(updatedUser.getEmail());
+            if (existingEmail.isPresent()){
+                throw new ResourceAlreadyExistsException("This email address is already in use");
+            }
+            user.setEmail(updatedUser.getEmail());
+        }
+        if (updatedUser.getPassword() != null){
+            user.setPassword(updatedUser.getPassword());
+        }
+
+
+        User updatedUserObj = userRepository.save(user);
+
+        return UserMapper.mapToUserDto(updatedUserObj);
     }
 }
