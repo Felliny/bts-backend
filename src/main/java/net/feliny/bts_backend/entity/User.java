@@ -20,7 +20,7 @@ public class User {
     //todo add sprint boot validation User
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //todo maybe change later generation 1, 2, 3, 4... is bad
     private Long id;
 
     @Column(name = "name", nullable = false, length = 100)
